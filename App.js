@@ -7,10 +7,14 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Platform } from 'react-native';
+import { Logs } from "expo";
+
 
 import HomeScreen from './screens/HomeScreen';
 import MapScreen from './screens/MapScreen';
 import EatScreen from './screens/EatScreen';
+
+Logs.enableExpoCliLogging();
 
 export default function App() {
   const Stack = createNativeStackNavigator();

@@ -8,14 +8,16 @@ import { useDispatch } from 'react-redux';
 import { setDestination, setOrigin } from '../slices/navSlice';
 import NavFavourites from '../components/NavFavourites';
 
-
 const HomeScreen = () => {
   const dispatch = useDispatch();
 
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
       <View style={tw`p-5`}>
-        <Image style={styles.logo} source={{ uri: "https://links.papareact.com/gzs"}}/>
+        <Image
+          style={styles.logo}
+          source={{ uri: "https://links.papareact.com/gzs" }}
+        />
 
         <GooglePlacesAutocomplete
           styles={{
@@ -24,13 +26,13 @@ const HomeScreen = () => {
             },
             textInput: {
               fontSize: 18,
-            }
+            },
           }}
           onPress={(data, details = null) => {
             dispatch(
               setOrigin({
                 location: details.geometry.location,
-                description: data.description
+                description: data.description,
               })
             );
 
@@ -40,9 +42,9 @@ const HomeScreen = () => {
           returnKeyType={"search"}
           enablePoweredByContainer={false}
           minLength={2}
-          query={{key: GOOGLE_MAPS_APIKEY, language: 'en'}}
-          placeholder='Where from?'
-          nearbyPlacesAPI='GooglePlacesSearch'
+          query={{ key: GOOGLE_MAPS_APIKEY, language: "en" }}
+          placeholder="Where from?"
+          nearbyPlacesAPI="GooglePlacesSearch"
           debounce={400}
         />
         <NavOptions />
